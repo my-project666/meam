@@ -1,0 +1,10 @@
+.ant-layout{
+     height: 100%;
+}
+.ant-layout-header{
+    background: #fff;
+    padding: 0 50px;
+}
+.ant-layout-sider{
+    width: 256px;
+}
