@@ -75,9 +75,5 @@ export default {
         path: '/login',
         component: Login
     },
-    // {
-    //     from:"/login",
-    //     to:"/login"
-    // }
   ]
 }

@@ -1,9 +1,11 @@
-import User from './module/user';
+//引入子模块
+import User from './modules/user';
 
-const user = new User()
-// setInterval(function(){
-//       user.isLogin = !user.isLogin
-// },1500)
+
+
+
+//实列化模块
+const user = new User();
 export default{
     user
 }

@@ -3,27 +3,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 interface PropsInfo {
     routes: Array<object>
 }
-// const MapRouter:(routes:any) =>any=({ routes }: PropsInfo) => {
-//     console.log(routes
-//     return <Switch>
-//         {
-//             routes.map((Item: any) => (
-//                 Item.path ?
-//                     Item.children ? <Route path={ Item.path } key={ Item.path }
-//                         render={ (props) => <Item.component { ...props } route={ Item.children }>
-//                             <MapRouter route={ Item.children }></MapRouter>
-//                         </Item.component> }
-//                     >
-//                     </Route> :
-//                         <Route path={ Item.path } key={ Item.path } render={ (props => <Item.component { ...props }></Item.component>) }>
-//                         </Route>
-//                     : <Redirect key={ Item.from } { ...Item }></Redirect>
-//             ))
-//         }
-//     </Switch>
-// }
-// export default MapRouter;
-
 export default (props: PropsInfo) => {
     console.log('props...', props);
     return <Switch>
@@ -46,6 +25,5 @@ export default (props: PropsInfo) => {
             })
 
         }
-       
-    </Switch>
+        </Switch>
 }
