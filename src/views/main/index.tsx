@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {Layout} from 'antd'
 import Headers from '../../component/headers';
-console.log(Headers)
 import Slider from '../../component/slider'
 import "./index.css";
 import RouterView from '../../router/RouterView';
@@ -12,11 +11,8 @@ interface Props {
      location:any
 }
 class Main extends React.Component<Props> {
-
      render(){
-  
           const routes=this.props['routes']
-          console.log(routes)
           return (
            <Layout>
                <Header>
@@ -32,9 +28,6 @@ class Main extends React.Component<Props> {
                </Layout>
              </Layout>
           )
-     }
-     componentDidMount() {
-          console.log(this.props);
      }
 }
 
