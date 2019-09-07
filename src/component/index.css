@@ -1,28 +1,12 @@
 .wrap{
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
+    background: #fff!important;
+    box-shadow: 0 0 10px rgba(0,0,0,.19)!important;
+    position: fixed!important;
+    top: 0!important;
+    width: 100%!important;
+    z-index: 100!important;
 }
-.logo{
-    width: 100px;
-    height: 100%;
-    background: #efefef;
-   
-}
-.logo>img{
-    width: 100%;
-    height: 80%;
-}
-.personageMsg{
-    width: 180px;
-    height: 100%;
-}
-.personageMsg>h1{
-    width: 100%;
-    height: 100%;
-    line-height: 64px;
-    text-align: center;
-}
-.til{
-    padding-left: 20px;
+img{
+    width: 110px;
+    height: 30px;
 }

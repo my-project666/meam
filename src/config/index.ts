@@ -16,7 +16,7 @@ export const config =[
             },
             {
                 id:3,
-                name:"产看试题",
+                name:"查看试题",
                 path:"/main/lookquestion"
             }
          ]

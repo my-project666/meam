@@ -1,9 +1,10 @@
 import axios from 'axios';
 import {message} from 'antd';
+import {getToken} from './index';
 const instance = axios.create({
     baseURL:'http://169.254.213.176:7001',
     timeout:1000,
-    //headers:{'X-Custom-Header':'foobar'}
+    headers:{authorization:getToken()}
 });
 
 //请求拦截器
