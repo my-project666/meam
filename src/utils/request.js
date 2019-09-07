@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {message} from 'antd';
+
 import {getToken} from './index';
 const instance = axios.create({
     baseURL:'http://169.254.213.176:7001',

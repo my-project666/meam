@@ -1,0 +1,66 @@
+/*
+      试题分类样式
+*/
+.quetion-wrap{
+    width: 100%;
+    border-radius: 5px;
+    background: #fff;
+    height: 100%;
+}
+.question-content{
+    width: 100%;
+    height: 600px;
+    background: #efefef;
+    padding: 20px;
+    
+}
+.cont-tablt{
+    background: #fff;
+    margin-top: 20px;
+}
+.cont-tablt td{
+      height: 50px;
+}
+.question-cont{
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 15px;
+}
+.ant-btn-primary{
+    width: 160px;
+    height: 40px;
+    background: blue;
+}
+.btn{
+    margin-bottom: 10px;
+}
+.ant-modal-title{
+    text-align: center;
+}
+.ant-modal-content{
+    height: 260px;
+}
+.ant-modal-footer{
+    margin-top: 30px;
+    text-align: center;
+    border: none;
+}
+.ant-modal-body,.ant-modal-header{
+    border: none;
+}
+.style_ipt{
+    height: 50px;
+    width: 70%;
+    border:none;
+    outline: none;
+    border-bottom:1px solid #ccc;
+}
+.ipt_wraper{
+    height: 50px;
+    text-align: center;
+}
+.title{
+    padding: 30px 0;
+}
