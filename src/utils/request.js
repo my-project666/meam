@@ -3,7 +3,7 @@ import {message} from 'antd';
 
 import {getToken} from './index';
 const instance = axios.create({
-    baseURL:'http://169.254.213.176:7001',
+    baseURL:'http://169.254.19.11:7001',
     timeout:1000,
     headers:{authorization:getToken()}
 });
@@ -17,13 +17,13 @@ instance.interceptors.request.use((config)=>{
 
 //响应拦截
 instance.interceptors.response.use((response)=>{
-    console.log('response...',response);
+    // console.log('response...',response);
     if(response.status!==200){
         message.error(response.statusText);
     }
     return response.data;
 },(error)=>{
-    console.log('error',error);
+    // console.log('error',error);
     return Promise.reject(error);
 })
 export default instance;

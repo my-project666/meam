@@ -1,0 +1,24 @@
+.addQuestion_wrap{
+    width: 100%;
+    height: 100%;
+    padding:0 20px;
+}
+.addQuestion_wrap>h2{
+    padding: 20px 0;
+    padding-left: 20px;
+}
+.addQuestion_conent{
+    height: auto;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+}
+.addQuestion_title{
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+}
+.addQuestion_subject{
+    height: auto;
+    background: #fff;
+}
