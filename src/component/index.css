@@ -1,12 +1,15 @@
-.wrap{
+/* .wrap{
     background: #fff!important;
     box-shadow: 0 0 10px rgba(0,0,0,.19)!important;
     position: fixed!important;
     top: 0!important;
     width: 100%!important;
     z-index: 100!important;
-}
+} */
 img{
     width: 110px;
     height: 30px;
+}
+.box_userMessage_biao span{
+    border: 0 !important;
 }
