@@ -20,13 +20,13 @@ instance.interceptors.request.use((config)=>{
 //响应拦截
 //响应拦截器的作用是在接收到相应后进行一些操作，for-editor
 instance.interceptors.response.use((response)=>{
-    console.log('response...',response);
+    // console.log('response...',response);
     if(response.status!==200){
         message.error(response.statusText);
     }
     return response.data;
 },(error)=>{
-    console.log('error',error);
+    // console.log('error',error);
     return Promise.reject(error);
 })
 export default instance;
