@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Form, Icon, Input, Button, Checkbox, Select, Modal } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Select, message } from 'antd';
 import Editor from 'for-editor';
 import './css/addquestion.css';
 const { Option } = Select
@@ -23,9 +23,11 @@ class addQuestions extends React.Component<Props> {
         this.props.form.validateFields(async (err, values) => {
             if (!err) {
                 const params = { ...values, user_id: this.state.userId }
-                this.state.visible;
-                // console.log(params)
-                // console.log( await this.props.addst.addSt(params))
+                const result= await this.props.addst.addSt(params)
+                console.log(result)
+                if(result.code===1){
+                    message.success(result.msg);
+                }
             }
         });
     };
@@ -36,31 +38,6 @@ class addQuestions extends React.Component<Props> {
         questionClass: [],
         userId: '',
         visible: false
-    }
-   
-    showModal = () => {
-        this.setState({
-          visible: true,
-        });
-      };
-      handleOk = (e:any) => {
-        console.log(e);
-        this.setState({
-          visible: false,
-        });
-      };
-    
-      handleCancel = (e:any)=> {
-        console.log(e);
-        this.setState({
-          visible: false,
-        });
-      };
-    handleChange(value: any) {
-        console.log(value)
-        this.setState({
-            value
-        })
     }
     render() {
         const { getFieldDecorator } = this.props.form;
@@ -149,24 +126,12 @@ class addQuestions extends React.Component<Props> {
                             </Form.Item>
                             <Form.Item>
                                 <Button type="primary" htmlType="submit" 
-                                className="login-form-button"
-                                 style={ { marginTop: "30px" } }
-                                 onClick={this.showModal}
-                                 
+                                 className="login-form-button"
+                                 style={ { marginTop: "30px" } }  
                                  >
                                     提交
                                 </Button>
                             </Form.Item>
-                            <Modal
-                                    visible={ this.state.visible }
-                                    onOk={ this.handleOk }
-                                    onCancel={ this.handleCancel }
-                                    cancelText="取消"
-                                    okText="确定"
-                                >
-                                   <p>你确定要添加这道题吗？</p>
-                                   <div>真的要添加吗？</div>
-                                </Modal>
                         </Form>
                     </div>
                 </div>
@@ -175,20 +140,14 @@ class addQuestions extends React.Component<Props> {
     }
     async componentDidMount() {
         const result = await this.props.typologyall.typoLogyall()
-        this.setState({
-            classList: result.data
-        })
         const classKc = await this.props.classkc.classKc()
-        this.setState({
-            classKc: classKc.data
-        })
         const questionclass = await this.props.questionclass.questionClass()
-        this.setState({
-            questionClass: questionclass.data
-        })
         const userid = await this.props.userid.userId()
         this.setState({
-            userId: userid.data.user_id
+             classList: result.data,
+             classKc: classKc.data,
+             questionClass: questionclass.data,
+             userId: userid.data.user_id
         })
     }
 }

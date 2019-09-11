@@ -4,7 +4,7 @@ import {message} from 'antd';
 import {getToken} from './index';
 //创建了一个请求头
 const instance = axios.create({
-    baseURL:'http://169.254.213.176:7001', //是用于请求的服务器URL
+    baseURL:'http://169.254.19.11:7001', //是用于请求的服务器URL
     timeout:1000, //请求超时时间  如果请求花费超过了timeout 的时间，请求将被中断
     headers:{authorization:getToken()}//自定义请求头
 });

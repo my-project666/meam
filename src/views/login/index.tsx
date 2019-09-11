@@ -34,7 +34,6 @@ class LoginPage extends React.Component<Props>{
     };
 
     render() {
-      console.log('props',this.props,this.props.user.login);
         const { getFieldDecorator } = this.props.form;
         const {user_name,user_pwd} = this.props.user.account;
         return(

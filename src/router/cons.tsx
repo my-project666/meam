@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 interface PropsInfo {
     routes: Array<object>
 }
+import routers from './router'
 export default (props: PropsInfo) => {
     // console.log('props...', props);
     return <Switch>
@@ -19,7 +20,6 @@ export default (props: PropsInfo) => {
                         } else {
                             return <item.component { ...props } />
                         }
-                        return  <Redirect key={index} exact from="/main" to="/main/addquestions"></Redirect>
                     } }></Route>
                 }
                 return  <Redirect key={index} exact from="/" to="/login"></Redirect>

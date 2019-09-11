@@ -12,6 +12,7 @@ import classManagement from '../views/main/children/classManagement' //班级管
 import classroomManagement from '../views/main/children/classroomManagement' //教室管理
 import studentManaage from '../views/main/children/studentManaage' //学生管理
 import awaitingRoom from '../views/main/children/awaitingRoom' //待批班级
+import Exam from '../views/main/children/exam'
 // 二级路由
 // import Content from '../components/Content';
 
@@ -64,6 +65,10 @@ export default {
            {
              path:"/main/awaitingroom",
              component:awaitingRoom
+           },
+           {
+            path:"/main/exam/:id",
+            component:Exam
            },
            {
              from:'/main',

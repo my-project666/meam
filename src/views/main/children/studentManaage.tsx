@@ -48,35 +48,6 @@ const columns = [
         dataIndex: 'Students',
     },
 ];
-const data = [
-    {
-        key: '1',
-        name: 'New York No. 1 Lake Park',
-        Student: 'aaaaaaaaaa',
-        className: 'aaaaaa',
-        Classroom: 'aaaaa',
-        password: 'aaaaaaa',
-        Students: 'aaaaaa'
-    },
-    {
-        key: '2',
-        name: 'New York No. 1 Lake Park',
-        Student: 'aaaaaaaaaa',
-        className: 'aaaaaa',
-        Classroom: 'aaaaa',
-        password: 'aaaaaaa',
-        Students: 'aaaaaa'
-    },
-    {
-        key: '3',
-        name: 'New York No. 1 Lake Park',
-        Student: 'aaaaaaaaaa',
-        className: 'aaaaaa',
-        Classroom: 'aaaaa',
-        password: 'aaaaaaa',
-        Students: 'aaaaaa'
-    }
-];
 @observer
 @inject('StudentManagementd')
 class studentManaage extends React.Component<Props> {
@@ -153,7 +124,4 @@ class studentManaage extends React.Component<Props> {
         )
     }
 }
-
-
-
 export default studentManaage;
