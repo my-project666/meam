@@ -20,7 +20,8 @@ function onSearch(val: any) {
 }
 interface Props {
     form: WrappedFormUtils,
-    StudentManagementd?: any
+    StudentManagementd?: any,
+    deletede?:any
 }
 const columns = [
     {
@@ -48,58 +49,40 @@ const columns = [
         dataIndex: 'Students',
     },
 ];
-const data = [
-    {
-        key: '1',
-        name: 'New York No. 1 Lake Park',
-        Student: 'aaaaaaaaaa',
-        className: 'aaaaaa',
-        Classroom: 'aaaaa',
-        password: 'aaaaaaa',
-        Students: 'aaaaaa'
-    },
-    {
-        key: '2',
-        name: 'New York No. 1 Lake Park',
-        Student: 'aaaaaaaaaa',
-        className: 'aaaaaa',
-        Classroom: 'aaaaa',
-        password: 'aaaaaaa',
-        Students: 'aaaaaa'
-    },
-    {
-        key: '3',
-        name: 'New York No. 1 Lake Park',
-        Student: 'aaaaaaaaaa',
-        className: 'aaaaaa',
-        Classroom: 'aaaaa',
-        password: 'aaaaaaa',
-        Students: 'aaaaaa'
-    }
-];
 @observer
-@inject('StudentManagementd')
+@inject('StudentManagementd','deletede')
 class studentManaage extends React.Component<Props> {
     state={
         data:[]
     }
     async componentDidMount() {
+        this.pase()
+    }
+    async pase(){
         const result = await this.props.StudentManagementd.StudentManagement()
         const studentM =result.data.map((item: any, index: any) => {
-            console.log(item)
             return {
                 key: index,
                 name: item.student_name,
                 StudentID:item.student_id,
-                className: 'aaaaaa',
-                Classroom: 'aaaaa',
+                className: item.grade_name,
+                Classroom: item.room_text,
                 password:item.student_pwd,
-                Students: 'aaaaaa'
+                Students: <p onClick={this.deletes.bind(this,item)}>删除</p>
             }
         })
         this.setState({
             data:studentM
         })
+        console.log(result.data)
+    }
+    deletes=(item:any)=>{
+        console.log(item.student_id)
+        this.dele(item.student_id)
+        this.pase()
+    }
+    async dele(student_id:any){
+         await this.props.deletede.deleted(student_id)
     }
     render() {
         return (

@@ -17,6 +17,9 @@ import classKc from './modules/classkc'
 import questionClass from './modules/questionclass'
 import userId from './modules/userid'
 import addSt from './modules/addKs'
+import deleteds from './modules/deleted'
+import deletead from './modules/deletea'
+import addClassds from './modules/addClassd'
 //实列化模块
 const user = new User();
 const addquestion = new addQuestion()
@@ -36,6 +39,9 @@ const classkc = new classKc()
 const questionclass = new questionClass()
 const userid = new userId()
 const addst = new addSt()
+const deletede = new deleteds()
+const deleteads = new deletead()
+const addClassdx = new addClassds()
 export default{
     user,
     addquestion,
@@ -54,5 +60,8 @@ export default{
     StudentManagementd,
     Class_managementd,
     graded,
-    pasegementd
+    pasegementd,
+    deletede,
+    deleteads,
+    addClassdx
 }

@@ -26,7 +26,7 @@ export let ClassManagement= ()=>{
 }
 //学生管理
 export let StudentManagement= ()=>{
-    const url = '/manger/student/new';
+    const url = '/manger/student';
     return request.get(url);
 }
 //班级管理错的[]
@@ -41,5 +41,20 @@ export let grade= ()=>{
 }
 export let pasegement= (params:any)=>{
     const url = '/manger/room';
+    return request.post(url,params);
+}
+///manger/student/:id=>student_id
+export let deleted= (student_id:any)=>{
+    const url = `/manger/student/${student_id}`;
+    return request.delete(url);
+}
+//删除班级
+export let deletea= (params:any)=>{
+    const url ='/manger/grade/delete';
+    return request.delete(url,{data:params});
+}
+//添加班级
+export let addClassd= (params:any)=>{
+    const url ='/manger/grade';
     return request.post(url,params);
 }

@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Table, Modal, Button, Input } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
+import './css/index.css';
 const columns = [
      {
           title: '班级名',
@@ -23,15 +24,24 @@ const columns = [
 interface Props {
      form: WrappedFormUtils,
      Class_managementd?: any,
-     graded?: any
+     graded?: any,
+     deleteads?:any,
+     addClassdx?:any
 }
 @observer
-@inject('Class_managementd', 'graded')
+@inject('Class_managementd', 'graded','deleteads','addClassdx')
 class classManagement extends React.Component<Props> {
      state = {
           loading: false,
           visible: false,
-          data:[]
+          data:[],
+          int2:'',
+          int1:'',
+          int3:'',
+          room_id:'',
+          subject_id:"",
+          flag:false
+
      };
      showModal = () => {
           this.setState({
@@ -43,9 +53,23 @@ class classManagement extends React.Component<Props> {
           this.setState({ loading: true });
           setTimeout(() => {
                this.setState({ loading: false, visible: false });
-          }, 3000);
+          },0);
+          const int1 = this.state.int1;
+          const int2 = this.state.int2;
+          const int3 = this.state.int3;
+          console.log(int1,int2,int3)
+          this.pawnd({grade_name:int1,room_id:this.state.room_id,subject_id:this.state.subject_id})
+          this.pase()
      };
+     async pawnd(params:any){
+          const result = await this.props.addClassdx.addClassd(params)
+          console.log(result);
+
+     }
      async componentDidMount() {
+          this.pase()
+     }
+     async pase(){
           const result = await this.props.graded.grade();
           console.log(result, "+++++++++");
           const classMangage = result.data.map((item: any, index: any) => {
@@ -54,16 +78,51 @@ class classManagement extends React.Component<Props> {
                     className: item.grade_name,
                     curriculum:item.subject_text,
                     Classroom: item.room_text,
-                    operation:<p><a href="#">修改</a>|<a href="#">删除</a></p>
+                    operation:<p><a href="#" onClick={this.xiug}>修改</a>|<a href="#" onClick={this.deletes.bind(this,item)}>删除</a></p>
                }
           })
           this.setState({
-               data: classMangage
+               data: classMangage,
+               room_id:result.data[0].room_id,
+               subject_id:result.data[0].subject_id
           })
+     }
+     xiug=()=>{
+          this.setState({
+               flag: true,
+          });
+     }
+     quxiao=()=>{
+          this.setState({
+               flag: false,
+          });
+     }
+     deletes=(item:any)=>{
+          console.log(item.grade_id)
+          this.delde({grade_id:item.grade_id})
+          this.pase()
+     }
+     async delde(grade_id:any){
+          await this.props.deleteads.deletea(grade_id);
      }
      handleCancel = () => {
           this.setState({ visible: false });
      };
+     int1=(e:any)=>{
+          this.setState({
+               int1:e.target.value
+          })
+     }
+     int2=(e:any)=>{
+          this.setState({
+               int2:e.target.value
+          })
+     }
+     int3=(e:any)=>{
+          this.setState({
+               int3:e.target.value
+          })
+     }
      render() {
           const { visible, loading } = this.state;
           return (
@@ -92,11 +151,11 @@ class classManagement extends React.Component<Props> {
                                                   </Button>,
                                              ]} className="Modals">
                                              <p>*班级名:</p>
-                                             <Input placeholder="班级名" />
+                                             <Input placeholder="班级名" onBlur={this.int1}/>
                                              <p>*教室名:</p>
-                                             <Input placeholder="请选择教室号" />
+                                             <Input placeholder="请选择教室号" onBlur={this.int2}/>
                                              <p>*课程名:</p>
-                                             <Input placeholder="课程名" />
+                                             <Input placeholder="课程名" onBlur={this.int3}/>
                                         </Modal>
                                    </div>
                               </div>
@@ -106,6 +165,36 @@ class classManagement extends React.Component<Props> {
                                    <Table columns={columns} dataSource={this.state.data} size="middle" />
                               </div>
                          </div>
+                    </div>
+                    <div>
+                         {this.state.flag?
+                              <div className="mask">
+                                   <div className="mask-div">
+                                   <p>
+                                        <input className="inp" type="text" placeholder=" 班级名" />
+                                   </p>
+                                   <p>
+                                        <select name="" id="classNumber">
+                                             <option value="">请选择教室号</option>
+                                             <option>haha</option>
+                                        </select>
+                                   </p>
+                                   <p>
+                                        <select name="" id="curriculumName">
+                                             <option value="">课程名</option>
+                                   
+                                                  <option>haha</option>
+                                             
+                                        </select>
+                                   </p>
+                                   <p id="mask-btn">
+                                        <button id="mask-cancel"  onClick={this.quxiao}>取消</button><button id="mask-submit">提交</button>
+                                   </p>
+
+                                   </div>
+                              </div>:''}
+                         
+                              
                     </div>
                </div>
           )
