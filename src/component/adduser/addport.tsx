@@ -16,16 +16,13 @@ class addPort extends React.Component<Props>{
               if(values.api_authority_text==undefined||values.api_authority_url==undefined||values.api_authority_method==undefined){
                   message.error('请填写内容')
               }else{
-                 
                   const result = await this.props.user.addPort(values)
-                  console.log(result)
                   if(result.code==0){
                       message.error(result.msg,2)
                   }else{
                       message.success(result.msg,2)
                   }
-              }
-              console.log(values)
+              }    
         });
     };
      render(){

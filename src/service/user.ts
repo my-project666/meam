@@ -34,3 +34,32 @@ export let useridentity =(params:any)=>{
 export let addport = (params:any) =>{
     return request.get('/user/authorityApi/edit',{params})
 }
+
+//获取所有视图数据
+export let view_authority=()=>{
+    return request.get('/user/view_authority')
+}
+
+
+//根据用户id，返回该用户的视图权限
+export let newshitu=(params:any)=>{
+    return request.get('/user/new',{params})
+}
+
+
+//展示身份和视图权限关系
+export let allshen=()=>{
+    return request.get('/user/api_authority')
+}
+
+//给身份设置api接口权限
+
+export let addshenfen=(params:any)=>{
+    return request.post('/user/setIdentityApi',params)
+}
+
+//给身份设定视图权限
+
+export let szshitu=(params:any)=>{
+    return request.post('/user/setIdentityView',params)
+}

@@ -1,5 +1,8 @@
 import {observable,action} from 'mobx'
-import {login,adduser,gen,identity,useridentity,addport} from '../../service/index'
+import {
+         login,adduser,gen,identity,useridentity,addport,view_authority,newshitu,allshen,
+         addshenfen,szshitu
+       } from '../../service/index'
 import {setToken,removeToken} from '../../utils/index'
 import cons from 'src/router/cons';
 //@observable是一个装饰器
@@ -57,6 +60,39 @@ class User{
     @action async addPort(params:any):Promise<any>{
         const result = await addport(params);
         return result;
+    }
+    //获取所有视图数据
+    @action async allview():Promise<any>{
+        const result = await view_authority()
+        // console.log(result)
+        return result
+    }
+
+    //根据用户id，返回该用户的视图权限
+    // @action async newSt(params:any):Promise<any>{
+    //      const result = await newshitu(params)
+    //      console.log(result);
+    //      return result
+    // }
+
+
+    //展示身份和视图权限关系
+    @action async shenall():Promise<any>{
+        const result = await allshen()
+        return result;
+    }
+    //给身份设定api接口权限
+    @action async addshenFen(params:any):Promise<any>{
+        const result = await addshenfen(params)
+        console.log(result)
+        return result
+    }
+
+    //给身份设定视图权限
+    @action async stquan(params:any):Promise<any>{
+        const result = await szshitu(params)
+        console.log(result)
+        return result
     }
 }
 

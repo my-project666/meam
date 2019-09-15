@@ -2,8 +2,11 @@ import * as React from 'react'
 import './css/adduser.css';
 import AddUser from '../../../component/adduser/adduser';
 import UserIdentity from '../../../component/adduser/useridentity';
-import AddPort from '../../../component/adduser/addport'
-import {WrappedFormUtils} from 'antd/lib/form/Form'
+import AddPort from '../../../component/adduser/addport';
+import Addview from '../../../component/adduser/addattempt';
+import Addshen from '../../../component/adduser/addshen';
+import Addshi from '../../../component/adduser/addshi'
+import {WrappedFormUtils} from 'antd/lib/form/Form';
 import {inject,observer} from 'mobx-react'
 interface Props {
     form:WrappedFormUtils,
@@ -32,13 +35,13 @@ class Adduser extends React.Component<Props> {
                                   <AddPort></AddPort>
                             </div>
                             <div className="addUser_wrapper__3qQDv">
-
+                                  <Addview></Addview>
                             </div>
                             <div className="addUser_wrapper__3qQDv">
-
+                                  <Addshen></Addshen>
                             </div>
                             <div className="addUser_wrapper__3qQDv">
-
+                                   <Addshi></Addshi>
                             </div>
                         </div>
                     </div>
