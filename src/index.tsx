@@ -6,8 +6,13 @@ import {BrowserRouter} from 'react-router-dom';
 import 'antd/dist/antd.css';
 import router from './router/router';
 import RouterView from './router/RouterView';
-import store from './store'
+import store from './store';
+//import {Router} from 'react-router'
+// import {createBrowserHistory} from 'history'
+// const history = createBrowserHistory()
 import './index.css';
+// import gurad from './utils/grauld'
+// gurad(history)
 ReactDOM.render(
   <Provider {...store}>
     <BrowserRouter>
@@ -17,4 +22,14 @@ ReactDOM.render(
   
   document.getElementById('root') as HTMLElement
 );
+// ReactDOM.render(
+//   <Provider {...store}>
+//      <Router history={history}>
+//         <RouterView routes={router.routes}/>
+//      </Router>
+//   </Provider>,
+  
+//   document.getElementById('root') as HTMLElement
+// );
+
 

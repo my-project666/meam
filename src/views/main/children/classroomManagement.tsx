@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Table, Button, Modal,Input } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
+import cons from 'src/router/cons';
 const columns = [
      {
           title: '教室号',
@@ -15,10 +16,11 @@ const columns = [
 interface Props {
      form: WrappedFormUtils,
      ClassManagementd?: any,
-     pasegementd?:any
+     pasegementd?:any,
+     delelate:any
 }
 @observer
-@inject('ClassManagementd','pasegementd')
+@inject('ClassManagementd','pasegementd','delelate')
 class classManagement extends React.Component<Props>{
 
      state = {
@@ -36,12 +38,18 @@ class classManagement extends React.Component<Props>{
                return {
                     key: index,
                     Classroom: item.room_text,
-                    operation: '操作'
+                    operation: <p onClick={()=>this.deles(item)} key={item.room_id}>删除</p>
                }
           })
           this.setState({
                data: classMangage
           })
+     }
+      deles= async (item:any)=>{
+          const resq=await this.props.delelate.deleLate({room_id:item.room_id})
+          if(resq.code==1){
+            this.CManagementd()
+          }
      }
      showModal = () => {
           this.setState({
@@ -58,7 +66,7 @@ class classManagement extends React.Component<Props>{
           this.setState({ loading: true });
           setTimeout(() => {
                this.setState({ loading: false, visible: false });
-          }, 3000);
+          },0);
           const value = this.state.value;
           this.clicks({room_text:value})
      };
@@ -72,7 +80,7 @@ class classManagement extends React.Component<Props>{
           this.setState({ visible: false });
      };
      render() {
-          const { visible, loading } = this.state;
+          const { visible, loading ,data} = this.state;
           return (
                <div className="box_classMang">
                     <div className="box_classMang_top">
@@ -106,7 +114,7 @@ class classManagement extends React.Component<Props>{
                          </div>
                          <div className="box_classMang_con_c">
                               <div>
-                                   <Table columns={columns} dataSource={this.state.data} size="middle" />
+                                   <Table columns={columns} dataSource={data} size="middle"  pagination={{ pageSize: 7}} />
                               </div>
                          </div>
                     </div>

@@ -28,6 +28,7 @@ class questionsList extends React.Component<Props>{
         };
      render() {
           const { list ,ks} = this.state;
+          console.log(list)
           const datas = list.map((item: any, index) => {
                const arr = item.grade_name.map((it: any, index: any) => (
                     <span key={ index }>{ it }</span>
@@ -88,7 +89,9 @@ class questionsList extends React.Component<Props>{
      }
      async componentDidMount() {
           const result = await this.props.shitilist.shiList()
+          console.log(result)
           const res = await this.props.classkc.classKc()
+          console.log(res)
           this.setState({
                list: result.exam,
                ks:res.data

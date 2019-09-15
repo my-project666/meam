@@ -20,7 +20,8 @@ import addSt from './modules/addKs' //添加试题实例
 import appRoval from './modules/daipi' //
 import addShiti from './modules/addshijuan'  //添加试题
 import shitiList from './modules/stlist'  //获取所有试题列表
-import questionExam from './modules/exam'
+import questionExam from './modules/exam';
+import deleLate from './modules/deleteClass'
 //实列化模块
 const user = new User();
 const addquestion = new addQuestion()
@@ -44,6 +45,7 @@ const approval = new appRoval()
 const addshiti = new addShiti()  //添加考试
 const shitilist = new shitiList()  // 获取试题列表
 const questionexam = new questionExam() //试卷详情
+const delelate = new deleLate()
 export default{
     user,  //用户登录
     addquestion,
@@ -66,6 +68,6 @@ export default{
     approval,
     addshiti,    //添加试题
     shitilist  ,  //所有试题列表
-    questionexam  //试卷列表
-
+    questionexam , //试卷列表
+    delelate
 }

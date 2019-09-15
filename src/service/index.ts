@@ -4,3 +4,4 @@ export * from './addclass'  //添加试题类型
 export * from './addQuestions' // 添加试题
 export * from './Marking' //待批试卷接口
 export * from './cj'  // 添加试卷和试卷列表接口
+export * from './deleteClass'  //删除教室

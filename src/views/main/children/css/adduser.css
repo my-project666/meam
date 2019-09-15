@@ -2,7 +2,7 @@
       添加用户样式
 */
 .adduser_title{
-    padding: 20px;
+    padding: 15px;
 }
 .adduser{
     width: 100%;
@@ -15,7 +15,7 @@
    background: #efefef;
 }
 .adduser_cont{
-    height: 500px;
+    height: 600px;
     padding: 10px;
 }
 .adduser_con{
@@ -24,11 +24,12 @@
     flex-wrap: wrap;
 }
 .adduser_con>.addUser_wrapper__3qQDv{
-    width: 30%;
+    width: 33%;
     padding: 1%;
     height: 50%;
     border:1px solid #ccc;
     border-radius: 8px;
+  
 }
 .btns{
     height: 32px;

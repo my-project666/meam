@@ -1,7 +1,6 @@
 import * as React from 'react';
 import './css/exam.css';
 import {inject,observer} from 'mobx-react';
-import cons from 'src/router/cons';
 interface Props {
     questionexam:any,
     match:any
@@ -14,13 +13,24 @@ class Exam extends React.Component<Props> {
     }
     render() {
         const {list} = this.state;
-        console.log(list)
+        // console.log(list)
         return (
             <div className="exam_wrap">
                  <h2 className="exam_title">试卷详情</h2>
                  <div className="exam_content">
                        <div className="exam_left">
-                               111111111
+                            {
+                                list.map((item:any)=>{
+                                    return <div className="exam_cont">
+                                                 <h3>{item.title}</h3>
+                                                 <p>{item.questions_stem}</p>
+                                                 <div>
+                                                      {/* <p>{item.questions_answer}</p> */}
+                                                      
+                                                 </div>
+                                           </div>
+                                })
+                            }
                        </div>
                        <div className="exam_right">
 
@@ -37,6 +47,4 @@ class Exam extends React.Component<Props> {
         })
     }
 }
-
-
 export default Exam;

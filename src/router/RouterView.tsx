@@ -19,8 +19,9 @@ export default (props: PropsInfo) => {
                         } else {
                             return <item.component { ...props } />
                         }
-                        return  <Redirect key={index} exact from="/main" to="/main/addquestions"></Redirect>
+                        // return  <Redirect key={index} exact from="/main" to="/main/addquestions"></Redirect>
                     } }></Route>
+                    
                 }
                 return  <Redirect key={index} exact from="/" to="/login"></Redirect>
             })

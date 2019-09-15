@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Input, Select, Button, Table } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 import { inject, observer } from 'mobx-react'
+import cons from 'src/router/cons';
 const { Option } = Select;
 function onChange(value: any) {
     console.log(`selected ${value}`);
@@ -52,12 +53,13 @@ const columns = [
 @inject('StudentManagementd')
 class studentManaage extends React.Component<Props> {
     state={
-        data:[]
+        data:[],
+        value:""
     }
     async componentDidMount() {
         const result = await this.props.StudentManagementd.StudentManagement()
         const studentM =result.data.map((item: any, index: any) => {
-            console.log(item)
+           
             return {
                 key: index,
                 name: item.student_name,
@@ -72,7 +74,26 @@ class studentManaage extends React.Component<Props> {
             data:studentM
         })
     }
+    search=(e:any)=>{
+       this.setState({
+           value:e.target.value
+       })
+    }
+    onsearch=()=>{
+         let {value,data} = this.state;
+         let datas:any = data.filter((item:any)=>{
+              if(item.name == value){
+                  return item
+              }
+         })
+         if(datas.length){
+             this.setState({data:datas})
+         }else{
+             console.log('没有此用户')
+         }
+    }
     render() {
+        const {value} = this.state
         return (
             <div className="box_student">
                 <div className="box_student_top">
@@ -80,7 +101,7 @@ class studentManaage extends React.Component<Props> {
                 </div>
                 <div className="box_student_int">
                     <div className="box_student_int_con">
-                        <Input size="large" placeholder="输入学生名字" className="int" />
+                        <Input size="large" placeholder="输入学生名字" className="int" value={value} onChange={this.search}/>
                         <Select
                             showSearch
                             style={{ width: 200 }}
@@ -113,7 +134,7 @@ class studentManaage extends React.Component<Props> {
                             <Option value="lucy">Lucy</Option>
                             <Option value="tom">Tom</Option>
                         </Select>
-                        <Button type="primary" className="btn">搜索</Button>
+                        <Button type="primary" className="btn" onClick={this.onsearch}>搜索</Button>
                         <Button type="primary" className="btn">重置</Button>
                     </div>
                     <div>

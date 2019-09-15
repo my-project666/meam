@@ -29,7 +29,7 @@ class addExamination extends React.Component<Props> {
         this.setState({
             list: result.data,
             clas: reqs.data
-        })
+        })  
     }
     state = {
         list: [],

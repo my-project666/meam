@@ -69,10 +69,6 @@ export default {
            {
             path:"/main/exam/:id",
             component:Exam
-           },
-           {
-             from:'/main',
-             to:"/main/addquestions"
            }
         ] 
     },
